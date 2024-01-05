@@ -1,0 +1,53 @@
+﻿@model List<Portfolio.Models.Project>
+
+@{
+    Layout = null;
+}
+
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+-->
+<!doctype html>
+<html lang="en">
+
+@Html.Action("_HeadPartial", "Default")
+<body>
+
+    @Html.Action("_NavbarPartial", "Default")
+
+    @Html.Action("_QuickContactPartial", "Default")
+
+    <section class="w3l-portflioblock" id="awards">
+        <div class="midd-w3 py-5">
+            <div class="container py-lg-4 py-md-3">
+                <div class="contact-heading text-center mb-5">
+                    <span class="text">Portföyüm </span>
+                    <h3 class="title-big">Son çalışmalarımdan <span>Örnekler </span></h3>
+                </div>
+                <div id="owl-portfolio" class="owl-carousel owl-theme mt-4 py-md-2 mb-4">
+                    @foreach (var item in Model)
+                    {
+                        <div class="item">
+                            <div class="portfolio-content">
+                                <a href="#url" class="grid-anchor">
+                                    <img src="@item.ProjectImage" class="img-fluid" alt="" />
+                                    <div class="template-info">
+                                        <h3>@item.Category.CategoryName - @item.Title</h3>
+                                        <p class="description">@item.Description</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+
+    @Html.Action("_FooterPartial", "Default")
+
+    @Html.Action("_ScriptPartial", "Contct")
+</body>
+
+</html>

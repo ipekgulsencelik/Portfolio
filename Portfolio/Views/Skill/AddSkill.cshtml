@@ -1,0 +1,27 @@
+﻿@model Portfolio.Models.Skill
+
+@{
+    ViewBag.Title = "AddSkill";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Yeni Yenetek Ekleme Sayfası</h2>
+<form method="post">
+    <label>Yetenek Adı</label>
+    <input type="text" name="SkillTitle" class="form-control" id="floatingInput" placeholder="Yetenek Adı..." required />
+    <br />
+    <label>Yetenek Derecesi (0 ve 100 arasında)</label>
+    <input type="range" name="SkillValue" id="skill_input" class="form-control" id="floatingInput" required min="0" max="100" />
+    <p>Oran: <output id="value"></output></p>
+    <br /> 
+    <button class="btn btn-outline-info">Kaydet</button>
+</form>
+
+<script>
+    const value = document.querySelector("#value");
+    const input = document.querySelector("#skill_input");
+    value.textContent = input.value;
+    input.addEventListener("input", (event) => {
+        value.textContent = event.target.value;
+    });
+</script>

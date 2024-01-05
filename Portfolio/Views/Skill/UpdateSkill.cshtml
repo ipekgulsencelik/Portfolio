@@ -1,0 +1,28 @@
+﻿@model Portfolio.Models.Skill
+
+@{
+    ViewBag.Title = "UpdateSkill";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Yenetek Güncelleme Sayfası</h2>
+<form method="post">
+    @Html.HiddenFor(x => x.SkillID, new { @class = "form-control" })
+    <label>Yetenek Adı</label>
+    @Html.TextBoxFor(x => x.SkillTitle, new { @class = "form-control" })
+    <br />
+    <label>Yetenek Derecesi (0 ve 100 arasında)</label>
+    @Html.TextBoxFor(x => x.SkillValue, new { @type="range", min = "0", max = "100", @id = "skill_input", @class = "form-control" })
+    <p>Oran: <output id="value"></output></p>
+    <br />
+    <button class="btn btn-outline-success">Verileri Güncelle</button>
+</form>
+
+<script>
+    const value = document.querySelector("#value");
+    const input = document.querySelector("#skill_input");
+    value.textContent = input.value;
+    input.addEventListener("input", (event) => {
+        value.textContent = event.target.value;
+    });
+</script>

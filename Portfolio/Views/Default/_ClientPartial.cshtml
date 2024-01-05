@@ -1,0 +1,58 @@
+﻿﻿@model List<Portfolio.Models.Client>
+
+<section class="w3l-homeblock3" id="clients">
+    <div class="midd-w3 py-5">
+        <div class="container py-lg-5 py-md-3">
+            <div class="row">
+                <div class="col-lg-6">
+                    <span class="text">Müşterilerim ve İş Ortaklarım</span>
+                    <h3 class="title-big">
+                        Müşteriler / İş Ortakları
+                        <span> İş Birlikleri.</span>
+                    </h3>
+                    <p class="mt-4">
+                        Geçtiğimiz on yılda, harika kuruluşlardan
+                        insanlarla çalışma şansına sahip oldum.
+                    </p>
+                    <div class="reward-list mt-5">
+                        <div class="reward-item">
+                            <div class="reward-item-photo">
+                                @ViewBag.ProjectCount
+                            </div>
+                            <div class="reward-item-detail">
+                                <span class="reward-item-title">Toplam Proje Sayısı</span>
+                                <p class="reward-item-descr"></p>
+                            </div>
+                        </div>
+                        <div class="reward-item">
+                            <div class="reward-item-photo">
+                                @ViewBag.TestimonialCount
+                            </div>
+                            <div class="reward-item-detail">
+                                <span class="reward-item-title">Toplam Referans Sayısı</span>
+                                <p class="reward-item-descr"></p>
+                            </div>
+                        </div>
+                        <div class="reward-item">
+                            <div class="reward-item-photo">
+                                @ViewBag.ClientCount
+                            </div>
+                            <div class="reward-item-detail">
+                                <span class="reward-item-title">Toplam İş Ortağı Sayısı</span>
+                                <p class="reward-item-descr"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 align-self text-center mt-lg-0 mt-md-5 mt-4">
+                    <div class="images">
+                        @foreach (var item in Model)
+                        {
+                            <img src="@item.ClientImage" class="img-fluid" alt="" />
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,50 @@
+﻿@model List<Portfolio.Models.Skill>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<h2>Yetenek Listesi</h2>
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Yetkinlik Adı</th>
+        <th>Yetkinlik Değeri</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <td>@count</td>
+            <td>@item.SkillTitle</td>
+            <td>@item.SkillValue</td>
+            <td><a href="#" onclick="return deleteSkill('@item.SkillID')" class="btn btn-outline-danger">Sil</a></td>
+            <td><a href="/Skill/UpdateSkill/@item.SkillID" class="btn btn-outline-success">Güncelle</a></td>
+        </tr>
+    }
+</table>
+<a href="/Skill/AddSkill/" class="btn btn-outline-primary">Yeni Yenetek Ekle</a>
+
+<script>
+    function deleteSkill(id) {
+        Swal.fire({
+            title: 'Silmek istediğinize emin misiniz?',
+            text: 'Bu öğeyi silerseniz geri alamazsınız!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Sil',
+            cancelButtonText: 'İptal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "/Skill/DeleteSkill?id=" + id;
+            }
+        });
+    }
+</script>
