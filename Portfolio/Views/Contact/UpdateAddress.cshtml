@@ -1,0 +1,24 @@
+﻿@model Portfolio.Models.Address
+
+@{
+    ViewBag.Title = "UpdateAddress";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>İletişim Bilgileri Güncelleme Sayfası</h2>
+<form method="post">
+    @Html.HiddenFor(x => x.AddressID, new { @class = "form-control" })
+    <label>Açıklama</label>
+    @Html.TextBoxFor(x => x.Description, new { @class = "form-control" })
+    <br />
+    <label>Mail Adresi</label>
+    @Html.TextBoxFor(x => x.Mail, new { @class = "form-control" })
+    <br />
+    <label>Telefon Numarası</label>
+    @Html.TextBoxFor(x => x.Phone, new { @class = "form-control" })
+    <br />
+    <label>Adres</label>
+    @Html.TextAreaFor(x => x.AddressDetail, 5, 1, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-outline-success">Güncelle</button>
+</form>

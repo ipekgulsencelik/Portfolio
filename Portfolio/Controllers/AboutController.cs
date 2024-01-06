@@ -10,30 +10,8 @@ namespace Portfolio.Controllers
 
 		public ActionResult Index()
 		{
-			var values = db.Abouts.ToList();
+			var values = db.Abouts.FirstOrDefault();
 			return View(values);
-		}
-
-		[HttpGet]
-		public ActionResult AddAbout()
-		{
-			return View();
-		}
-
-		[HttpPost]
-		public ActionResult AddAbout(About about)
-		{
-			var values = db.Abouts.Add(about);
-			db.SaveChanges();
-			return RedirectToAction("Index");
-		}
-
-		public ActionResult DeleteAbout(int id)
-		{
-			var values = db.Abouts.Find(id);
-			db.Abouts.Remove(values);
-			db.SaveChanges();
-			return RedirectToAction("Index");
 		}
 
 		[HttpGet]

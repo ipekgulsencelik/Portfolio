@@ -1,8 +1,32 @@
-﻿@model 
+﻿@model Portfolio.Models.About
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Index</h2>
-
+<h3>Hakkımda</h3>
+<br />
+<table class="table table-striped">
+    <tr>
+        <th>Görsel :</th>
+        <td><img src="@Model.AboutImage" style="height:200px; width:200px; border-radius:50%" /></td>
+    </tr>
+    <tr>
+        <th>Ad :</th>
+        <td>@Model.NameSurname</td>
+    </tr>
+    <tr>
+        <th>Giriş :</th>
+        <td>@Model.Introduction</td>
+    </tr>
+    <tr>
+        <th>Başlık :</th>
+        <td>@Model.Title</td>
+    </tr>
+    <tr>
+        <th>Açıklama :</th>
+        <td>@Model.Description</td>
+    </tr>
+</table>
+<a href="/About/UpdateAbout/@Model.AboutID" class="btn btn-outline-success">Hakkımda Bilgilerimi Güncelle</a>

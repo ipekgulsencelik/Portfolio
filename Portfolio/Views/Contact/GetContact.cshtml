@@ -1,0 +1,28 @@
+﻿@model Portfolio.Models.Address
+
+@{
+    ViewBag.Title = "GetContact";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h3>İletişim Bilgilerim</h3>
+<br />
+<table class="table table-striped">
+    <tr>
+        <th>Açıklama :</th>
+        <td>@Model.Description</td>
+    </tr>
+    <tr>
+        <th>Email :</th>
+        <td>@Model.Mail</td>
+    </tr>
+    <tr>
+        <th>Telefon :</th>
+        <td>@Model.Phone</td>
+    </tr>
+    <tr>
+        <th>Adres :</th>
+        <td>@Model.AddressDetail</td>
+    </tr>
+</table>
+<a href="/Contact/UpdateAddress/@Model.AddressID" class="btn btn-outline-success">İletişim Bilgilerimi Güncelle</a>

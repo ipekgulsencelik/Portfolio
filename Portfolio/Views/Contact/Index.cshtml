@@ -3,6 +3,9 @@
     Layout = null;
 }
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <!--
 Author: W3layouts
 Author URL: http://w3layouts.com
@@ -58,7 +61,7 @@ Author URL: http://w3layouts.com
                             <textarea name="Message" class="form-control" id="w3lMessage" placeholder="Mesaj..."
                                       required=""></textarea>
                             <div class="text-right">
-                                <button type="submit" class="btn btn-secondary btn-style mt-4">Mesajı Gönder</button>
+                                <button type="submit" onclick="sendMessage()" class="btn btn-secondary btn-style mt-4">Mesajı Gönder</button>
                             </div>
                         </form>
                     </div>
@@ -72,3 +75,18 @@ Author URL: http://w3layouts.com
 </body>
 
 </html>
+
+<script>
+    function sendMessage() {
+        Swal.fire({
+            title: 'Mailiniz başarılı bir şekilde iletildi.',
+            icon: 'success',
+            showCancelButton: false,
+            confirmButtonText: 'Tamam'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "/Default/Index";
+            }
+        });
+    }
+</script>

@@ -1,0 +1,50 @@
+﻿@model List<Portfolio.Models.SocialMedia>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<h2>Sosyal Medya Hesapları Listesi</h2>
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Sosyal Medya İkon</th>
+        <th>Sosyal Medya URL</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <td>@count</td>
+            <td>@item.Icon</td>
+            <td><a href="@item.AccountURL">@item.AccountURL</a></td>
+            <td><a href="#" onclick="return deleteSocialMedia('@item.SocialMediaID')" class="btn btn-outline-danger">Sil</a></td>
+            <td><a href="/SocialMedia/UpdateSocialMedia/@item.SocialMediaID" class="btn btn-outline-success">Güncelle</a></td>
+        </tr>
+    }
+</table>
+<a href="/SocialMedia/AddSocialMedia/" class="btn btn-outline-primary">Yeni Sosyal Medya Hesabı Ekle</a>
+
+<script>
+    function deleteSocialMedia(id) {
+        Swal.fire({
+            title: 'Silmek istediğinize emin misiniz?',
+            text: 'Bu öğeyi silerseniz geri alamazsınız!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Sil',
+            cancelButtonText: 'İptal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "/SocialMedia/DeleteSocialMedia?id=" + id;
+            }
+        });
+    }
+</script>

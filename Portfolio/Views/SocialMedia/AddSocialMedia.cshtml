@@ -1,0 +1,17 @@
+﻿@model Portfolio.Models.SocialMedia
+
+@{
+    ViewBag.Title = "AddSocialMedia";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Yeni Sosyal Medya Hesabı Ekleme</h2>
+<form method="post">
+    <label>Sosyal Medya URL</label>
+    <input type="text" class="form-control" name="AccountURL" />
+    <br />
+    <label>İkon</label>
+    <input type="text" class="form-control" name="Icon" />
+    <br />
+    <button class="btn btn-info">Sosyal Medya Hesabı Ekle</button>
+</form>

@@ -140,6 +140,7 @@
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="Controllers\SkillController.cs" />
+    <Compile Include="Controllers\SocialMediaController.cs" />
     <Compile Include="Controllers\StatisticController.cs" />
     <Compile Include="Controllers\TestimonialController.cs" />
     <Compile Include="Global.asax.cs">
@@ -461,7 +462,6 @@
     <Content Include="Views\Testimonial\UpdateTestimonial.cshtml" />
     <Content Include="Views\Project\Index.cshtml" />
     <Content Include="Views\Service\UpdateService.cshtml" />
-    <Content Include="Views\About\AddAbout.cshtml" />
     <Content Include="Views\Statistic\Index.cshtml" />
     <Content Include="Views\Default\_HeadPartial.cshtml" />
     <Content Include="Views\Default\_NavbarPartial.cshtml" />
@@ -590,6 +590,13 @@
     <Content Include="Views\About\UpdateAbout.cshtml" />
     <Content Include="Views\Skill\AddSkill.cshtml" />
     <Content Include="Views\Skill\UpdateSkill.cshtml" />
+    <Content Include="Views\Contact\MessageList.cshtml" />
+    <Content Include="Views\Contact\MessageDetail.cshtml" />
+    <Content Include="Views\Contact\GetContact.cshtml" />
+    <Content Include="Views\Contact\UpdateAddress.cshtml" />
+    <Content Include="Views\SocialMedia\AddSocialMedia.cshtml" />
+    <Content Include="Views\SocialMedia\UpdateSocialMedia.cshtml" />
+    <Content Include="Views\SocialMedia\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -5,23 +5,32 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Hakkımda Güncelleme Sayfası</h2>
-<form method="post">
-    @Html.HiddenFor(x => x.AboutID, new { @class = "form-control" })
-    <label>Giriş</label>
-    @Html.TextBoxFor(x => x.Introduction, new { @class = "form-control" })
+<h2>Hakkımda Bilgilerimi Güncelleme</h2>
+<form method="post" enctype="multipart/form-data">
+    <div class="text-center align-text-center justify-content-center">
+        <img src="@Model.AboutImage" style="height:200px; width:200px; border-radius:50%" />
+    </div>
     <br />
+    @Html.HiddenFor(x => x.AboutID, new { @class = "form-control" })
     <label>Ad Soyad</label>
     @Html.TextBoxFor(x => x.NameSurname, new { @class = "form-control" })
+    <br />
+    @Html.HiddenFor(x => x.AboutImage, new { @class = "form-control" })
+    <div class="form-group">
+        <label>Görsel Seçiniz</label>
+        <br />
+        @*@Html.TextBoxFor(x => x.AboutImage, new { @type = "file" })*@
+        <input type="file" name="AboutImage" />
+        <br />
+    </div>
+    <label>Giriş</label>
+    @Html.TextBoxFor(x => x.Introduction, new { @class = "form-control" })
     <br />
     <label>Başlık</label>
     @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
     <br />
     <label>Açıklama</label>
-    @Html.TextBoxFor(x => x.Description, new { @class = "form-control" })
-    <br />
-    <label>Resim</label>
-    @Html.TextBoxFor(x => x.AboutImage, new { @class = "form-control" })
+    @Html.TextAreaFor(x => x.Description, 5, 1, new { @class = "form-control" })
     <br />
     <button class="btn btn-outline-success">Güncelle</button>
 </form>

@@ -1,0 +1,82 @@
+﻿@model List<Portfolio.Models.Contact>
+
+@{
+    ViewBag.Title = "MessageList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<h2>Gelen Mesajlar</h2>
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Ad Soyad</th>
+        <th>Mail</th>
+        <th>Konu</th>
+        <th>Mesaj</th>
+        <th>Mesaj Detay</th>
+        <th>Sil</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <th>@count</th>
+            <td>@item.Name</td>
+            <td>@item.Mail</td>
+            <td>@item.Subject</td>
+            @if (@item.Message == null || @item.Message.Length <= 30)
+            {
+                <td>@item.Message</td>
+            }
+            else
+            {
+                <td>
+                    <a href="#" id="MessageBtn"
+                       onclick="return messageContact('@item.Message', '@item.ContactID')">
+                        @item.Message.Substring(0, 10)...
+                    </a>
+                </td>
+            }
+            <td><a href="/Contact/MessageDetail/@item.ContactID" class="btn btn-outline-warning">Detay</a></td>
+            <td><a href="#" onclick="return deleteMessage('@item.ContactID')" class="btn btn-outline-danger">Sil</a></td>
+        </tr>
+    }
+</table>
+
+<script>
+    function messageContact(message, id) {
+        Swal.fire({
+            title: 'Mesaj',
+            text: message,
+            icon: 'success',
+            showCancelButton: true,
+            confirmButtonText: 'Detay',
+            cancelButtonText: 'Tamam'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "/Contact/MessageDetail?id=" + id;
+            }
+        });
+    }
+</script>
+
+<script>
+    function deleteMessage(id) {
+        Swal.fire({
+            title: 'Silmek istediğinize emin misiniz?',
+            text: 'Bu öğeyi silerseniz geri alamazsınız!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Sil',
+            cancelButtonText: 'İptal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "/Contact/DeleteMessage?id=" + id;
+            }
+        });
+    }
+</script>
