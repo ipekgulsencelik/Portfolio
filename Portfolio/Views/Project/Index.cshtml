@@ -18,6 +18,7 @@
             <th>Proje Adı</th>
             <th>Kategori</th>
             <th>Github</th>
+            <th>Detay</th>
             <th>Sil</th>
             <th>Güncelle</th>
         </tr>
@@ -28,7 +29,8 @@
                 <td>@count</td>
                 <td>@item.Title</td>
                 <td>@item.Category.CategoryName</td>
-                <td><a href="/Project/GithubProject/@item.ProjectID" class="btn btn-outline-warning">Github</a></td>
+                <td><a href="@item.ProjectURL" class="btn btn-outline-warning">Github</a></td>
+                <td><a href="/Project/ProjectDetail/@item.ProjectID" class="btn btn-outline-secondary">Detaylar</a></td>
                 <td><a href="#" onclick="return deleteProject('@item.ProjectID')" class="btn btn-outline-danger">Sil</a></td>
                 <td><a href="/Project/UpdateProject/@item.ProjectID" class="btn btn-outline-success">Güncelle</a></td>
             </tr>

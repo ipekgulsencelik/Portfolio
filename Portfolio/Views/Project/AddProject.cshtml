@@ -1,0 +1,36 @@
+﻿@model Portfolio.Models.Project
+
+@{
+    ViewBag.Title = "AddProject";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Yeni Proje Ekleme</h2>
+<form method="post" enctype="multipart/form-data">
+    <label>Proje Adı</label>
+    @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
+    <br />
+    <label>Başlık</label>
+    @Html.TextBoxFor(x => x.SubTitle, new { @class = "form-control" })
+    <br />
+    <label>Açıklama</label>
+    <textarea name="Description" rows="5" class="form-control"></textarea>
+    <br />
+    <label>Görsel</label>
+    <input type="file" name="image" />
+    <br />
+    <br />
+    <label>Kategori Seçiniz</label>
+    @Html.DropDownListFor(x => x.ProjectCategory, (List<SelectListItem>)ViewBag.category, new { @class = "form-control" })
+    <br />
+    <label>Proje URL</label>
+    @Html.TextBoxFor(x => x.ProjectURL, new { @class = "form-control" })
+    <br />
+    <label>Proje Süresi</label>
+    @Html.TextBoxFor(x => x.CompleteDay, new { @type = "number", @class = "form-control" })
+    <br />
+    <label>Proje Fiyatı</label>
+    @Html.TextBoxFor(x => x.Price, new { @type = "number", @class = "form-control" })
+    <br />
+    <button class="btn btn-info">Kaydet</button>
+</form>

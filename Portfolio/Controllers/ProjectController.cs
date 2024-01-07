@@ -1,4 +1,6 @@
 ﻿using Portfolio.Models;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -17,13 +19,31 @@ namespace Portfolio.Controllers
 		[HttpGet]
 		public ActionResult AddProject()
 		{
-			return View();
+            List<SelectListItem> categories = (from x in db.Categories.ToList()
+                                               select new SelectListItem
+                                               {
+                                                   Text = x.CategoryName,
+                                                   Value = x.CategoryID.ToString()
+                                               }).ToList();
+            ViewBag.category = categories;
+
+            return View();
 		}
 
 		[HttpPost]
-		public ActionResult AddProject(Project project)
-		{
-			db.Projects.Add(project);
+		public ActionResult AddProject(Project project, System.Web.HttpPostedFileBase image)
+        {
+            string uniqueFileName = null;
+
+            if (image != null)
+            {
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + image.FileName;
+                var path = "~/Images/" + uniqueFileName;
+                image.SaveAs(Server.MapPath(path));
+                project.ProjectImage = uniqueFileName;
+            }
+
+            db.Projects.Add(project);
 			db.SaveChanges();
 			return RedirectToAction("Index");
 		}
@@ -39,18 +59,42 @@ namespace Portfolio.Controllers
 		[HttpGet]
 		public ActionResult UpdateProject(int id)
 		{
-			var value = db.Projects.Find(id);
+            List<SelectListItem> categories = (from x in db.Categories.ToList()
+                                               select new SelectListItem
+                                               {
+                                                   Text = x.CategoryName,
+                                                   Value = x.CategoryID.ToString()
+                                               }).ToList();
+            ViewBag.category = categories;
+
+            var value = db.Projects.Find(id);
 			return View(value);
 		}
 
 		[HttpPost]
-		public ActionResult UpdateProject(Project project)
-		{
-			var value = db.Projects.Find(project.ProjectID);
+		public ActionResult UpdateProject(Project project, System.Web.HttpPostedFileBase image)
+        {
+            var value = db.Projects.Find(project.ProjectID);
+
+            string uniqueFileName = null;
+
+            if (image != null)
+            {
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + image.FileName;
+                var path = "~/Images/" + uniqueFileName;
+                image.SaveAs(Server.MapPath(path));
+                project.ProjectImage = uniqueFileName;
+                value.ProjectImage = project.ProjectImage;
+            }
+            else
+            {
+                value.ProjectImage = value.ProjectImage;
+            }
+
 			value.Title = project.Title;
 			value.Description = project.Description;
-			//value.CompleteDay = project.CompleteDay;
-			//value.Price = project.Price;
+			value.CompleteDay = project.CompleteDay;
+			value.Price = project.Price;
 			db.SaveChanges();
 			return RedirectToAction("Index");
 		}

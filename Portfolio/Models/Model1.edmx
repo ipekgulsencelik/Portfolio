@@ -44,6 +44,7 @@
           <Property Name="AwardID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Title" Type="nvarchar" MaxLength="100" />
           <Property Name="Description" Type="nvarchar" MaxLength="250" />
+          <Property Name="ImageURL" Type="nvarchar" MaxLength="250" />
         </EntityType>
         <EntityType Name="Category">
           <Key>
@@ -80,6 +81,8 @@
           <Property Name="CompleteDay" Type="int" />
           <Property Name="Price" Type="decimal" Precision="18" Scale="2" />
           <Property Name="ProjectImage" Type="nvarchar" MaxLength="250" />
+          <Property Name="ProjectURL" Type="nvarchar" MaxLength="250" />
+          <Property Name="SubTitle" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Service">
           <Key>
@@ -226,6 +229,8 @@
           <Property Name="CompleteDay" Type="Int32" />
           <Property Name="Price" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="ProjectImage" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ProjectURL" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="SubTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -272,6 +277,7 @@
           <Property Name="AwardID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ImageURL" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Address">
           <Key>
@@ -359,6 +365,8 @@
           <EntitySetMapping Name="Projects">
             <EntityTypeMapping TypeName="PortfolioDBModel.Project">
               <MappingFragment StoreEntitySet="Project">
+                <ScalarProperty Name="SubTitle" ColumnName="SubTitle" />
+                <ScalarProperty Name="ProjectURL" ColumnName="ProjectURL" />
                 <ScalarProperty Name="ProjectImage" ColumnName="ProjectImage" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="CompleteDay" ColumnName="CompleteDay" />
@@ -401,6 +409,7 @@
           <EntitySetMapping Name="Awards">
             <EntityTypeMapping TypeName="PortfolioDBModel.Award">
               <MappingFragment StoreEntitySet="Award">
+                <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="AwardID" ColumnName="AwardID" />

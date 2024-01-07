@@ -21,6 +21,8 @@ namespace Portfolio.Models
         public Nullable<int> CompleteDay { get; set; }
         public Nullable<decimal> Price { get; set; }
         public string ProjectImage { get; set; }
+        public string ProjectURL { get; set; }
+        public string SubTitle { get; set; }
     
         public virtual Category Category { get; set; }
     }

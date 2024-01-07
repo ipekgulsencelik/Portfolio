@@ -8,19 +8,17 @@
 <h2>Hakkımda Bilgilerimi Güncelleme</h2>
 <form method="post" enctype="multipart/form-data">
     <div class="text-center align-text-center justify-content-center">
-        <img src="@Model.AboutImage" style="height:200px; width:200px; border-radius:50%" />
+        <img src="~/Images/@Model.AboutImage" style="height:200px; width:200px; border-radius:50%" />
     </div>
     <br />
     @Html.HiddenFor(x => x.AboutID, new { @class = "form-control" })
     <label>Ad Soyad</label>
     @Html.TextBoxFor(x => x.NameSurname, new { @class = "form-control" })
     <br />
-    @Html.HiddenFor(x => x.AboutImage, new { @class = "form-control" })
     <div class="form-group">
         <label>Görsel Seçiniz</label>
         <br />
-        @*@Html.TextBoxFor(x => x.AboutImage, new { @type = "file" })*@
-        <input type="file" name="AboutImage" />
+        <input type="file" name="image" />
         <br />
     </div>
     <label>Giriş</label>
