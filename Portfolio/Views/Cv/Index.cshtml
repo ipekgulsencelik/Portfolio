@@ -1,0 +1,36 @@
+﻿@model Portfolio.Models.CV
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<h2>CV</h2>
+<form method="post" enctype="multipart/form-data">
+    <table class="table table-striped">
+        <tr>
+            <th>Ad :</th>
+            <td>@Model.Name</td>
+        </tr>
+        <tr>
+            <th>Link :</th>
+            <td><a href="/CV/GetCV">@Model.URL</a></td>
+        </tr>
+        <tr>
+            <th>Tarih :</th>
+            <td>@Model.CreateDate</td>
+        </tr>
+        <tr>
+            <th>İndir :</th>
+            <td><a href="/Cv/GetCV/" class="btn btn-outline-success">CV İndir</a></td>
+        </tr>
+        <tr>
+            <th>Güncel CV :</th>
+            <td><input type="file" name="cv" required /></td>
+        </tr>
+    </table>
+    <button class="btn btn-info">Kaydet</button>
+</form>

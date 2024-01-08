@@ -38,5 +38,6 @@ namespace Portfolio.Models
         public virtual DbSet<Admin> Admins { get; set; }
         public virtual DbSet<Contact> Contacts { get; set; }
         public virtual DbSet<Client> Clients { get; set; }
+        public virtual DbSet<CV> CVs { get; set; }
     }
 }

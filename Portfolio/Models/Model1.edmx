@@ -70,6 +70,15 @@
           <Property Name="Subject" Type="nvarchar" MaxLength="100" />
           <Property Name="Message" Type="nvarchar(max)" />
         </EntityType>
+        <EntityType Name="CV">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="50" />
+          <Property Name="URL" Type="nchar" MaxLength="50" />
+          <Property Name="CreateDate" Type="date" />
+        </EntityType>
         <EntityType Name="Project">
           <Key>
             <PropertyRef Name="ProjectID" />
@@ -147,6 +156,7 @@
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CV" EntityType="Self.CV" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Project" EntityType="Self.Project" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Service" EntityType="Self.Service" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Skill" EntityType="Self.Skill" Schema="dbo" store:Type="Tables" />
@@ -198,6 +208,7 @@
           <EntitySet Name="Admins" EntityType="PortfolioDBModel.Admin" />
           <EntitySet Name="Contacts" EntityType="PortfolioDBModel.Contact" />
           <EntitySet Name="Clients" EntityType="PortfolioDBModel.Client" />
+          <EntitySet Name="CVs" EntityType="PortfolioDBModel.CV" />
         </EntityContainer>
         <EntityType Name="Testimonial">
           <Key>
@@ -316,6 +327,15 @@
           </Key>
           <Property Name="ClientID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ClientImage" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CV">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="URL" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Precision="0" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -455,6 +475,16 @@
               <MappingFragment StoreEntitySet="Client">
                 <ScalarProperty Name="ClientImage" ColumnName="ClientImage" />
                 <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CVs">
+            <EntityTypeMapping TypeName="PortfolioDBModel.CV">
+              <MappingFragment StoreEntitySet="CV">
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -5,5 +5,38 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>UpdateProject</h2>
-
+<h2>Yeni Proje Güncelleme</h2>
+<form method="post" enctype="multipart/form-data">
+    <div class="text-center align-text-center justify-content-center">
+        <img src="~/Images/@Model.ProjectImage" style="height:200px; width:200px;" />
+    </div>
+    @Html.HiddenFor(x => x.ProjectID, new { @class = "form-control" })
+    <label>Proje Adı</label>
+    @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
+    <br />
+    <label>Başlık</label>
+    @Html.TextBoxFor(x => x.SubTitle, new { @class = "form-control" })
+    <br />
+    <label>Açıklama</label>
+    @Html.TextAreaFor(x => x.Description, 5, 1, new { @class = "form-control"})
+    <br />
+    <div class="form-group">
+        <label>Görsel</label>
+        <br />
+        <input type="file" name="image" />
+        <br />
+    </div>
+    <label>Kategori Seçiniz</label>
+    @Html.DropDownListFor(x => x.ProjectCategory, (List<SelectListItem>)ViewBag.category, new { @class = "form-control" })
+    <br />
+    <label>Proje URL</label>
+    @Html.TextBoxFor(x => x.ProjectURL, new { @class = "form-control" })
+    <br />
+    <label>Proje Süresi</label>
+    @Html.TextBoxFor(x => x.CompleteDay, new { @type = "number", @class = "form-control" })
+    <br />
+    <label>Proje Fiyatı</label>
+    @Html.TextBoxFor(x => x.Price, new { @type = "number", @class = "form-control" })
+    <br />
+    <button class="btn btn-outline-success">Güncelle</button>
+</form>

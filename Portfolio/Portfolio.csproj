@@ -131,7 +131,9 @@
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AwardController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\CvController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\EducationController.cs" />
     <Compile Include="Controllers\ErrorPageController.cs" />
@@ -167,6 +169,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Contact.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CV.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Model1.Context.cs">
@@ -607,10 +612,14 @@
     <Content Include="Views\Category\UpdateCategory.cshtml" />
     <Content Include="Views\Project\AddProject.cshtml" />
     <Content Include="Views\Project\UpdateProject.cshtml" />
+    <Content Include="Views\Project\ProjectDetails.cshtml" />
+    <Content Include="Views\Cv\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Images\" />
+    <Folder Include="Templates\CV\" />
+    <Folder Include="Views\Client\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

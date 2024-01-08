@@ -1,4 +1,5 @@
-﻿using Portfolio.Models;
+﻿using Newtonsoft.Json.Linq;
+using Portfolio.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -92,11 +93,21 @@ namespace Portfolio.Controllers
             }
 
 			value.Title = project.Title;
+            value.SubTitle = project.SubTitle;
 			value.Description = project.Description;
-			value.CompleteDay = project.CompleteDay;
+            value.ProjectImage = project.ProjectImage;
+            value.ProjectCategory = project.ProjectCategory;
+            value.ProjectURL = project.ProjectURL;
+            value.CompleteDay = project.CompleteDay;
 			value.Price = project.Price;
 			db.SaveChanges();
 			return RedirectToAction("Index");
 		}
-	}
+
+        public ActionResult ProjectDetails(int id)
+        {
+            var value = db.Projects.Find(id);
+            return View(value);
+        }
+    }
 }

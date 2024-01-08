@@ -1,0 +1,42 @@
+﻿@model Portfolio.Models.Project
+
+@{
+    ViewBag.Title = "ProjectDetails";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h3>Gelen Mesaj Detayı</h3>
+<table class="table table-striped">
+    <tr>
+        <th>Görsel :</th>
+        <th><img src="~/Images/@Model.ProjectImage" style="height:200px; width:200px;" /></th>
+    </tr>
+    <tr>
+        <th>Proje Adı :</th>
+        <td>@Model.Title</td>
+    </tr>
+    <tr>
+        <th>Başlık :</th>
+        <td>@Model.SubTitle</td>
+    </tr>
+    <tr>
+        <th>Açıklama :</th>
+        <td>@Model.Description</td>
+    </tr>
+    <tr>
+        <th>Kategori :</th>
+        <td>@Model.Category.CategoryName</td>
+    </tr>
+    <tr>
+        <th>Proje URL :</th>
+        <td><a href="@Model.ProjectURL">@Model.ProjectURL</a></td>
+    </tr>
+    <tr>
+        <th>Proje Fiyatı :</th>
+        <td>@Model.Price ₺</td>
+    </tr>
+    <tr>
+        <th>Proje Süresi :</th>
+        <td>@Model.CompleteDay Gün</td>
+    </tr>
+</table>
